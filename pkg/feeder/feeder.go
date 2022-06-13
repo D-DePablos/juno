@@ -221,7 +221,7 @@ func (c Client) GetBlock(blockHash, blockNumber string) (*StarknetBlock, error) 
 func (c Client) GetStateUpdate(blockHash, blockNumber string) (*StateUpdateResponse, error) {
 	req, err := c.newRequest("GET", "/get_state_update", formattedBlockIdentifier(blockHash, blockNumber), nil)
 	if err != nil {
-		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_contract_addresses.")
+		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_state_update.")
 		return nil, err
 	}
 
@@ -244,7 +244,7 @@ func (c Client) GetCode(contractAddress, blockHash, blockNumber string) (*CodeIn
 	blockIdentifier["contractAddress"] = contractAddress
 	req, err := c.newRequest("GET", "/get_code", blockIdentifier, nil)
 	if err != nil {
-		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_contract_addresses.")
+		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_code.")
 		return nil, err
 	}
 	var res CodeInfo
@@ -267,7 +267,7 @@ func (c Client) GetFullContract(contractAddress, blockHash, blockNumber string) 
 	blockIdentifier["contractAddress"] = contractAddress
 	req, err := c.newRequest("GET", "/get_full_contract", blockIdentifier, nil)
 	if err != nil {
-		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_contract_addresses.")
+		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_full_contract.")
 		return nil, err
 	}
 	var res map[string]interface{}
@@ -292,7 +292,7 @@ func (c Client) GetStorageAt(contractAddress, key, blockHash, blockNumber string
 	req, err := c.newRequest("GET", "/get_storage_at",
 		blockIdentifier, nil)
 	if err != nil {
-		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_contract_addresses.")
+		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_storage_at.")
 		return nil, err
 	}
 	var res StorageInfo
@@ -310,7 +310,7 @@ func (c Client) GetStorageAt(contractAddress, key, blockHash, blockNumber string
 func (c Client) GetTransactionStatus(txHash, txID string) (*TransactionStatus, error) {
 	req, err := c.newRequest("GET", "/get_transaction_status", TxnIdentifier(txHash, txID), nil)
 	if err != nil {
-		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_contract_addresses.")
+		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_transaction_status.")
 		return nil, err
 	}
 	var res TransactionStatus
@@ -326,7 +326,7 @@ func (c Client) GetTransactionStatus(txHash, txID string) (*TransactionStatus, e
 func (c Client) GetTransaction(txHash, txID string) (*TransactionInfo, error) {
 	req, err := c.newRequest("GET", "/get_transaction", TxnIdentifier(txHash, txID), nil)
 	if err != nil {
-		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_contract_addresses.")
+		log.Default.With("Error", err, "Gateway URL", c.BaseURL).Error("Unable to create a request for get_transaction.")
 		return nil, err
 	}
 	var res TransactionInfo

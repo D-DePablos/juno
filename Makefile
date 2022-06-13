@@ -33,7 +33,6 @@ install-courtney:
 	(cd courtney && go get  ./... && go build courtney.go)
 	go get ./...
 
-
 install-gofumpt:
 	# install gofumpt
 	go install mvdan.cc/gofumpt@latest

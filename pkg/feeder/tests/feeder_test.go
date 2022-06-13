@@ -282,14 +282,14 @@ func TestGetBlockIdByHash(t *testing.T) {
 }
 
 func TestGetTransactionHashById(t *testing.T) {
-	body := "\"hash\"\n"
+	body := "\"id\"\n"
 	httpClient.DoReturns(generateResponse(body), nil)
 	var cOrig string
 	err := json.Unmarshal([]byte(body), &cOrig)
 	if err != nil {
 		t.Fatal()
 	}
-	transactionHash, err := client.GetTransactionHashByID("hash")
+	transactionHash, err := client.GetTransactionHashByID("id")
 	if err != nil {
 		t.Fatal()
 	}
